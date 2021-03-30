@@ -1,86 +1,85 @@
-import React, {createContext, useState, useEffect, useReducer} from 'react'
-import Reducer from './Reducer.js'
+import React, { createContext, useState, useEffect } from 'react'
 
-const API_URL ='https://covid19.mathdro.id/api'
+
+const API_URL = 'https://covid19.mathdro.id/api'
 const URL = 'https://covid19.mathdro.id/api/countries/'
-const initialState ={}
-let urll = ""
+const initialState = {}
+
 
 export const GlobalContext = createContext(initialState);
 
-export const ContextProvider =({children})=>{
-    const [country, setCountry] = useState("")
-    const [data,setData]= useState(initialState)
-    const [path,setPath]= useState(API_URL)
+export const ContextProvider = ({ children }) => {
+    const [country, setCountry] = useState("Global")
+    const [data, setData] = useState(initialState)
+    const [path, setPath] = useState(API_URL)
     const [dailydata, setdailydata] = useState([])
     const [picker, setPicker] = useState([])
 
-    function countrySelector(fetched){
-        console.log("Country",fetched)
+    function countrySelector(fetched) {
+        console.log("Country", fetched)
         setCountry(fetched)
-        setPath(fetched==="Global" ? API_URL:`${URL}${fetched}`)
+        setPath(fetched === "Global" ? API_URL : `${URL}${fetched}`)
     }
 
-    const load_data = async () =>{
-        try{
+    const load_data = async () => {
+        try {
             const respone = await fetch(path)
             const fdata = await respone.json()
+            console.log(fdata)
             const modifiedData = {
-                confirmed:fdata.confirmed.value,
-                recovered:fdata.recovered.value,
-                deaths:fdata.deaths.value
+                confirmed: fdata.confirmed.value,
+                recovered: fdata.recovered.value,
+                deaths: fdata.deaths.value
             }
             setData(modifiedData)
         }
-        catch(error) {
+        catch (error) {
             console.log("FAILED")
         }
-        // console.log("Fetched", data)
     }
 
-    const dailyData = async () =>{
-        try{
+    const dailyData = async () => {
+        try {
             const respone = await fetch(`${API_URL}/daily`)
             const fdata = await respone.json()
-            const modifiedData = fdata.map((daily)=>({
-                confirmed:daily.confirmed.total,
-                recovered:daily.recovered.total,
-                deaths:daily.deaths.total,
-                date:daily.reportDate
+            const modifiedData = fdata.map((daily) => ({
+                confirmed: daily.confirmed.total,
+                recovered: daily.recovered.total,
+                deaths: daily.deaths.total,
+                date: daily.reportDate
             }))
             setdailydata(modifiedData)
         }
-        catch(error) {
+        catch (error) {
             console.log("FAILED")
         }
-        // console.log("Fetched", data)
     }
 
-    const countryPicker = async () =>{
-        try{
+    const countryPicker = async () => {
+        try {
             const respone = await fetch(URL)
             const fdata = await respone.json()
             setPicker(fdata.countries)
         }
-        catch(error) {
+        catch (error) {
             console.log("FAILED")
         }
-        // console.log("Fetched", data)
     }
 
     useEffect(() => {
-        load_data();
         dailyData();
         countryPicker();
-    }, [setData,country,path,setdailydata,setPicker])
-    
+        load_data();
+    }, [setData, path, setdailydata, setPicker])
+
     return (
         <GlobalContext.Provider value={
             {
                 data,
                 dailydata,
                 picker,
-                countrySelector
+                countrySelector,
+                country
             }
         }>
             {children}

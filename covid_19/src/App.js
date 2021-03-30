@@ -27,9 +27,9 @@ function App() {
 
    <ContextProvider>
      <div className={classes.root}>
-        <Cardexporter></Cardexporter>
-        <CountrySelector></CountrySelector>
-        <Graph></Graph>
+        <Cardexporter />
+        <CountrySelector />
+        <Graph />
      </div>
   </ContextProvider>
   );
