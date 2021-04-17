@@ -8,9 +8,9 @@ export const History = () => {
     return (
         <div className='heading3'>
             <h1>Transaction History</h1>
-            <ul>
+            <div className='transactionHolder'>
                 {transactions.map(transaction =>(<Transaction details={transaction}></Transaction>))}
-            </ul>
+            </div>
         </div>
     )
 }

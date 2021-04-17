@@ -1,6 +1,6 @@
 .heading3{
     background: rgb(236, 236, 224);
-  
+    justify-content: center;
     margin-left: 0.5em;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -11,4 +11,7 @@
    text-align: center;
    padding-bottom: 1px;
    
+}
+.transactionHolder{
+    padding:10px
 }

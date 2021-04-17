@@ -37,19 +37,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .in-ex>div{
-    padding: 10px;
-    font-size: 20px;
+    padding: .6em;
+    
 }
 
 .income{
     color: green;
-    font-size: 20px;
+
 }
 .expense{
     color: red;
-    font-size: 20px;
     
 }

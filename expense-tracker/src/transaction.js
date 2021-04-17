@@ -11,11 +11,12 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 600,
+        
         '& > * + *': {
             marginTop: theme.spacing(1),
         },
-        marginBottom:1.5
+        marginBottom:1.5,
+       
     },
 
 
