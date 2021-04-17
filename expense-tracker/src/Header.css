@@ -1,0 +1,55 @@
+.heading1{
+    background: #EEE;
+    margin-left: 0.5em;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 2px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 2px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 2px;
+    width: 100%;
+    text-align: center;
+}
+
+.currentbal{
+    margin-top: 1vw;
+    background: rgb(194, 241, 52);
+    margin-left: 0.5em;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 2px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 2px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 2px;
+    width: 100%;
+    text-align: center;
+}
+
+.in-ex{
+    margin-top: 1vw;
+    background: rgb(221, 223, 215);
+    margin-left: 0.5em;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 2px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 2px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 2px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.in-ex>div{
+    padding: 10px;
+    font-size: 20px;
+}
+
+.income{
+    color: green;
+    font-size: 20px;
+}
+.expense{
+    color: red;
+    font-size: 20px;
+    
+}
