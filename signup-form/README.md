@@ -22,4 +22,4 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ### `npm run build`
 
 Try out the form on 
-### 'abdul-rehman-multistepform.surge.sh'
+### 'https://abdul-rehman-multistepform.surge.sh'
