@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This webpage was developed using React and Apollo GraphQL. The webpage lists all the launches by SpaceX and a description about the selected launch.
+
 ## Available Scripts
 
 In the project directory, you can run:
