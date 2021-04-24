@@ -1,14 +1,12 @@
 import React, {useState} from 'react';
-import { Formik, Form, useFormik, Field, ErrorMessage } from 'formik';
+import { Formik, Form} from 'formik';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import Templatefield from './Template'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -17,7 +15,7 @@ const useStyles = makeStyles(theme => ({
       },
   },
   paper: {
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(4),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -33,110 +31,98 @@ const useStyles = makeStyles(theme => ({
   submit: {
       margin: theme.spacing(3, 0, 2),
   },
-  divider:{
-      marginBottom: 4,
-  }
+  divider :{
+    marginBottom: 10,
+}
 }));
 
 let schema = yup.object().shape({
-  firstName: yup.string().required('This field is required.'), 
-  lastName: yup.string().required('This field is required.'), 
-  email: yup.string().email().required('This field is required.'), 
-  password: yup.string()
-      .min(6, 'Password is too short.')
-      .max(20, 'Password is too long.')
+  street: yup.string().required('This field is required.'), 
+  steet2: yup.string(), 
+  city: yup.string().required('This field is required.'), 
+  province: yup.string()
       .required('This field is required.')
 });
 
 
-function Address() {
+
+function PersonalInfo({step,setForm,state}) {
     const classes = useStyles();
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Formik 
-                    initialValues={{
-                      firstName:'',
-                      lastName:'',
-                      email:'',
-                      password:''
-                    }} 
+                    initialValues={state} 
                     validationSchema={schema} 
                     onSubmit ={(values)=>{
-                        console.log('submitted',values)}
+                        setForm({...values})
+                        console.log(state)
+                        step(s=>s+1)
+                    }
                 }>
-                  {({ handleSubmit, handleChange, errors, touched})=>(
-                  <Form className={classes.form} onSubmit={handleSubmit}>
+                  <Form className={classes.form}>
+                        <Grid container spacing={1}>
+                            <Grid item xs={6} className={classes.divider}>
+                                <Templatefield
+                                    name="street"
+                                    label = "Address Line 1"
+                                />
+                            
+                            </Grid>
+                            <Grid item xs={6} className={classes.divider}>
+                                <Templatefield
+                                    name="street2"
+                                    label = "Address Line 2"
+                                />
+                        </Grid>
+                        </Grid>
                         <Grid item xs={12} className={classes.divider}>
-                            <Field
-                                as = {TextField}
-                                name="firstName"
-                                variant="outlined"
-                                fullWidth
-                                label="First Name"
-                                helperText={<ErrorMessage name='firstName'/>}
+                            <Templatefield
+                                name="city"
+                                label = "City"
                             />
                         </Grid>
-                        <Grid item xs={12} >
-                            <Field
-                                as = {TextField}
-                                error={errors.lastName && touched.lastName}
-                                onChange={handleChange}
-                                helperText={errors.lastName && touched.lastName ? errors.lastName : null}
-                                variant="outlined"
-                                fullWidth
-                                id="lastName"
-                                label="Last Name"
-                                name="lastName"
-                                autoComplete="lname"
+                        <Grid item xs={12} className={classes.divider}>
+                            <Templatefield
+                                name="province"
+                                label = "Province"
                             />
                         </Grid>
-                        <Grid item xs={12}>
-                            <Field
-                                as = {TextField}
-                                error={errors.email}
-                                onChange={handleChange}
-                                helperText={errors.email ? errors.email : null}
-                                variant="outlined"
-                                fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                            />
+                    <Grid container spacing={1}>
+                        <Grid item xs={6} className={classes.divider}>
+                        <Button
+                            onClick={()=>{step(0)}}
+                            id="back"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                        >
+                            Back
+                        </Button>
+                    </Grid>
+                    <Grid item xs={6} className={classes.divider}>
+                        <Button
+                            fullWidth
+                            type="submit"
+                            id="next"
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                        >
+                            Next
+                        </Button>
                         </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                error={errors.password}
-                                onChange={handleChange}
-                                helperText={errors.password ? errors.password : null}
-                                variant="outlined"
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                            />
-                        </Grid>
+                    </Grid>
                     
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                    >
-                        Sign Up
-                    </Button>
                 </Form>
-                  )}
               </Formik>
             </div>
         </Container>
   );
 }
 
-export default Address;
+export default PersonalInfo;
+
 
