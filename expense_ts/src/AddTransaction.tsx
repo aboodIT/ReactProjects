@@ -15,7 +15,7 @@ export const AddTransaction = () => {
 
     const { add_transaction } = useContext(GetContext);
  
-    function onSubmit(e){
+    function onSubmit(e:React.FormEvent){
         e.preventDefault()
         const transaction:transactionType = {
             id: new Date().getTime(),
@@ -47,7 +47,7 @@ export const AddTransaction = () => {
                             onChange={(e)=> setAmount(parseInt(e.target.value))}
                             placeholder="Enter amount"/>
                 </div>
-                <p><i>- for expense</i></p>
+                <p style={{fontSize:12}}><i>- for expense</i></p>
                 <Button type='submit' variant="contained" color="primary" disabled={!amount || !detail}>Add transaction</Button>
             </form>
         </div>

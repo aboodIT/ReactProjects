@@ -15,9 +15,16 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2),
       textAlign: 'left',
       color: theme.palette.text.secondary,
-      width: 500,
-      height: 250
+      width: "70vw",
+      height: "50%",
+      fontSize: '110%'
     },
+    submit:{
+        width: '100%',
+        height: 25,
+        backgroundColor: '#31314e',
+        color: 'white',
+    }
   }),
 );
 
@@ -82,7 +89,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div >
       <Grid
         container
         spacing={3}
@@ -91,7 +98,7 @@ function App() {
         alignItems="center"
       >
         <h1>QUIZ</h1>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <Paper elevation={3} className={classes.paper}>
             <p>{quiz[qnumber].question}</p>
             <form onSubmit={handleOnSubmit}>
@@ -109,7 +116,7 @@ function App() {
                   </div>
                 )
               })}
-              <input type="submit" className="submit" />
+              <input type="submit" className={classes.submit} />
             </form>
           </Paper>
         </Grid>

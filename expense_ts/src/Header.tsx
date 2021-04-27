@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import {GetContext} from './GetContext.js';
+import {GetContext} from './GetContext';
 import './Header.css';
 
 
@@ -25,16 +25,16 @@ export const Header = () =>{
             <h1 >Expense Tracker</h1>
         </div>
         <div className='currentbal'>
-            <h1 >Current Balance</h1> 
+            <h2>Current Balance</h2> 
             <h2>$ {income+expense}</h2>
         </div>
         <div className='in-ex'>
             <div className='income' > 
-                <h2>Income</h2>
+                <h3>Income</h3>
                 <p>$ {income}</p>
             </div>
             <div className='expense'>
-                <h2 >Expense</h2>
+                <h3>Expense</h3>
                 <p>$ {-expense}</p>
             </div>
         </div>

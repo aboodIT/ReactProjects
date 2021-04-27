@@ -1,5 +1,5 @@
 import React, {createContext, useReducer} from 'react'
-import Reducer from './Reducer.js'
+import Reducer from './Reducer'
 import {transactionType} from './AddTransaction'
 
 type transactionsArray = {
@@ -18,7 +18,12 @@ export type valueType = {
 
 type ContextValue = valueType | transactionsArray;
 
-const [state,dispatch] = useReducer(Reducer,initialState);
+
+
+export const GetContext = createContext<valueType>(initialState);
+
+export const ContextProvider:React.FunctionComponent<React.ReactNode> =({children})=>{
+    const [state,dispatch] = useReducer(Reducer,initialState);
 
     function del_transaction(id:number):void {
         dispatch({type:"DELETE",
@@ -35,11 +40,6 @@ const [state,dispatch] = useReducer(Reducer,initialState);
             del_transaction,
             add_transaction
     }
-
-export const GetContext = createContext<valueType>(initialState);
-
-export const ContextProvider:React.FunctionComponent<React.ReactNode> =({children})=>{
-    
 
     return (
         <GetContext.Provider value = {value}>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext } from 'react'
-import { GetContext } from './GetContext.js';
+import { GetContext } from './GetContext';
 import './Transaction.css'
 import { makeStyles } from '@material-ui/core/styles';
 import SnackbarContent from '@material-ui/core/SnackbarContent';

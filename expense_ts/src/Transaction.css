@@ -1,0 +1,7 @@
+.transaction{
+    display:inline-block
+}
+.deleter{
+    display: inline-block;
+    margin-left: 5px;
+}
