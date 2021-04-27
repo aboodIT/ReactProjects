@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This is a simple quiz app developed using React, Typescript and materialUI
+
 ## Available Scripts
 
 In the project directory, you can run:
