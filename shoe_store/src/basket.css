@@ -1,0 +1,14 @@
+.heading{
+    border-color: brown;
+    border-style: solid;
+    border-width: 1px;
+}
+.descriptor{
+    background-color: rgb(248, 245, 245);
+}
+.descriptor>div{
+    display: flex;
+}
+.descriptor>div>p{
+    margin: 10px;
+}
